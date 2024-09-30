@@ -1,0 +1,147 @@
+:root {
+    --withe: #ffffff;
+    --blak: #212121;
+    --grey: #BDBDBD;
+    --gray_med: #607D8B;
+    --grey_dark: #757575;
+    --red: #f44336;
+    --red_dark: #d32f2f;
+    --red_med: #FFCDD2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* From Uiverse.io by Yaya12085 */
+.custum-file-upload {
+    margin: 0px 40px;
+    height: 100px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #cacaca;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
+}
+
+.custum-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+    height: 40px;
+    fill: rgba(75, 85, 99, 1);
+}
+
+.custum-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custum-file-upload .text span {
+    font-weight: 400;
+    color: rgba(75, 85, 99, 1);
+}
+
+.custum-file-upload input {
+    display: none;
+}
+
+form {
+    padding: 50px;
+}
+
+.custum_file_label {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0px 40px;
+    color: var(--withe);
+}
+
+
+hr {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.label_title,
+.label_logo,
+.label_image,
+.label_video,
+.label_keywords,
+.label_description_web,
+.label_title_web {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--withe)
+}
+
+.image,
+.title,
+.logo,
+.image_id,
+.video_id,
+.keywords,
+.description_web,
+.title_web {
+    width: 100%;
+    padding: 0 40px;
+}
+
+#title_home,
+#logo_home,
+#keywords,
+#title_web {
+    width: 100%;
+    height: 40px;
+    border: none;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+#image_id,
+#video_id {
+    text-align: center;
+    margin-left: 10px;
+    max-width: 300px;
+    height: 40px;
+    border: none;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+#description_web {
+    width: 60%;
+    height: 150px;
+    border: none;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.btn_submit{
+    width: 100%;
+    height: 60px;
+    border-radius: 10px;
+    font-size: 27px;
+    font-weight: bold;
+    background-color: var(--red_dark);
+}

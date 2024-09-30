@@ -1,0 +1,58 @@
+footer {
+    
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding: 40px;
+}
+
+.artbat {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 3px;
+}
+
+.artbat div {
+    display: flex;
+    align-items: center;
+}
+
+.artbat div a {
+    text-decoration: none;
+    color: var(--grey);
+}
+
+.icon_instagram {
+    width: 30px;
+    height: 30px;
+    margin: 7px;
+    color: rgb(209, 52, 196);
+}
+
+.icon_telegram {
+    width: 27px;
+    height: 27px;
+    margin: 7px;
+    color: rgb(39, 101, 216);
+}
+
+
+.icon_phone {
+    width: 23px;
+    height: 23px;
+    margin: 7px;
+    color: rgb(38, 150, 47);
+}
+
+.gaper {
+    width: 12%;
+}
+
+.matlab {
+    width: 63%;
+    color: var(--grey);
+}

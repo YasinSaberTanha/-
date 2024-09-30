@@ -1,0 +1,67 @@
+:root {
+  --withe: #ffffff;
+  --blak: #212121;
+  --grey: #BDBDBD;
+  --gray_med: #607D8B;
+  --grey_dark: #757575;
+  --red: #f44336;
+  --red_dark: #d32f2f;
+  --red_med: #FFCDD2;
+}
+
+section{
+  padding: 20px;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: var(--blak);
+}
+
+.nav_continer {
+  color: var(--grey);
+  margin: auto;
+  max-width: 1250px;
+}
+meter{
+  width: 100%;
+  height: 20px;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1400px) {
+  .nav_continer {
+    max-width: 1100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .nav_continer {
+    max-width: 892px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav_continer {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav_continer {
+    max-width: 620px;
+  }
+}
