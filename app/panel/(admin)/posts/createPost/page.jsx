@@ -1,9 +1,8 @@
 "use client"
-
-import { redirect } from "next/dist/server/api-utils"
 import "../globals.css"
 import { useState } from "react"
-export default function About() {
+
+export default function CreatePostgit() {
 
   const [loding, setLoding] = useState(false)
 
