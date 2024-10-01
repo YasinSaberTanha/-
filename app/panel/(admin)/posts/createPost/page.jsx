@@ -1,13 +1,17 @@
 "use client"
+import Loding from "@/app/layout/lodingBtn/loding"
 import "../globals.css"
-import { useState } from "react"
-
+import { useState, useRef } from "react"
+import { useRouter } from "next/navigation"
 export default function CreatePostgit() {
 
   const [loding, setLoding] = useState(false)
+  const refBtn = useRef()
+  const route = useRouter()
 
   const sobmitForm = async (form) => {
-  
+
+    
     const formData = new FormData()
 
     formData.append("file", form.get("file"))
@@ -16,25 +20,27 @@ export default function CreatePostgit() {
     formData.append("type", form.get("type"))
     formData.append("mode", form.get("mode"))
 
+    refBtn.current.disabled = true
+    
     try {
-      setLoding(true)
       const res = await fetch("http://localhost:3000/api/postPost", {
         method: "POST",
         body: formData
       })
 
       if (res.ok) {
-        setLoding(false)
+        route.push("/panel/posts")
       }
 
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoding(false)
     }
 
 
 
   }
-
 
   return (
     <form action={sobmitForm}>
@@ -94,8 +100,7 @@ export default function CreatePostgit() {
         </select>
       </div>
       <hr />
-      <button className="btn_submit"> {!loding ? "ثبت" :
-        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>}</button>
+      <button className="btn_submit" onClick={() => setLoding(true)} ref={refBtn}> {loding ? <Loding /> : <div>ثبت</div>}</button>
     </form>
   );
 }

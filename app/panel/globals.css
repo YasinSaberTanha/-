@@ -70,22 +70,27 @@ table thead th {
 table thead tr {
   display: grid;
   grid-template-columns: 1fr 0.5fr 1fr 1fr 1fr 0.5fr;
+  align-items: center;
 }
 
 
 table tbody tr {
   display: grid;
   grid-template-columns: 1fr 0.5fr 1fr 1fr 1fr 0.5fr;
-
+  align-items: center;
 }
 
 table tbody td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-wrap: nowrap;
   color: var(--withe);
   text-align: center;
   font-size: 20px;
   overflow-x: scroll;
   margin: 5px 0;
+  height: 100%;
 }
 
 table tbody td::-webkit-scrollbar {
@@ -94,6 +99,7 @@ table tbody td::-webkit-scrollbar {
 }
 
 .delete_user {
+  border: none;
   width: 100%;
   height: 100%;
   background-color: var(--red_dark);
@@ -101,8 +107,24 @@ table tbody td::-webkit-scrollbar {
 }
 
 
+.delete_btn {
+  width: 100%;
+  height: 100%;
+}
 
+.delete_btn button{
+  border: none;
+  width: 100%;
+  height: 50%;
+  color: var(--withe);
+}
 
+.btn_go_delete{
+  background-color: var(--red_dark);
+}
+.btn_cansel{
+  background-color: rgb(0, 81, 255);
+}
 
 
 

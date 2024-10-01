@@ -367,3 +367,62 @@
 .Btn:active {
     transform: translate(2px, 2px);
 }
+
+@media (max-width: 1400px) {}
+
+@media (max-width: 1200px) {
+    .mobile_ferst {
+        padding: 30px 50px 50px 40px;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        display: inline-block;
+        background-color: var(--grey_dark);
+        text-shadow: 0 0 10px black;
+        position: fixed;
+        width: 300px;
+        height: 100%;
+        z-index: 1000;
+    }
+
+    .mobile_ferst div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile_ferst_div {
+        gap: 10px;
+        display: block;
+        height: 50%;
+    }
+
+    .mobile_ferst_div a {
+        margin: 0;
+        position: relative;
+    }
+
+    .mobile_ferst_div a::before {
+        position: absolute;
+        right: -20px;
+        transform: translate(50% ,-50%);
+        top: 50%;
+        content:"";
+        width: 10px;
+        height: 10px;
+        border-radius: 50px;
+        background-color: #fff;
+
+    }
+
+    .checkbox_div {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 992px) {}
+
+@media (max-width: 768px) {}

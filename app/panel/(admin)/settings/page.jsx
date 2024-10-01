@@ -4,6 +4,7 @@ import "./settings.css"
 import Editor from "@/app/layout/ckEditor/editor";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Loding from "@/app/layout/lodingBtn/loding";
 
 
 export default function Settings() {
@@ -17,6 +18,7 @@ export default function Settings() {
   const [footer, setfooter] = useState("");
   const [dataRes, setdataRes] = useState(null);
   const [data, setdata] = useState(null);
+  const [loding, setLoding] = useState(false)
 
   useEffect(() => {
     async function getSettings() {
@@ -60,6 +62,9 @@ export default function Settings() {
 
     } catch (err) {
       console.log(err);
+    }
+    finally {
+      setLoding(false)
     }
   }
 
@@ -202,7 +207,7 @@ export default function Settings() {
           <textarea id="description_web" name="description_web" onChange={onchange} value={data?.description_web}></textarea>
         </div>
         <hr />
-        <button className="btn_submit">ثبت</button>
+        <button className="btn_submit" onClick={() => setLoding(true)}>{loding ? <Loding /> : "ثبت"}</button>
       </form>
     </>
   );
