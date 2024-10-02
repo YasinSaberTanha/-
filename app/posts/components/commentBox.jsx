@@ -1,8 +1,6 @@
 
 
 export default function CommentBox({ comment, onClick }) {
-
-    
     return (
         <div className="div_caht" >
             <div className="div_caht_viwe" onClick={onClick}>

@@ -1,16 +1,13 @@
 
-import Header from "../layout/header/header";
 import "./globals.css";
 import { vazir } from "../fonts/font";
+import Header from "../layout/header/header";
 import Footer from "../layout/footer/footer";
 import { ToastContainer } from "react-toastify";
 import DataSettings from "../layout/dataSetting/settings";
 
 
 const setting = await DataSettings()
-
-
-
 
 export const metadata = {
   title: setting?.title_web,

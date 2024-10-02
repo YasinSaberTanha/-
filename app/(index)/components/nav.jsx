@@ -5,10 +5,7 @@ import Description from "./description";
 
 
 
-export default function Nav({ setting }) {
-
-
-
+export default async function Nav({ setting }) {
     return (
         <nav className="nav">
             <div className="nav_continer">

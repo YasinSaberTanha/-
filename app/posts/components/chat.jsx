@@ -1,6 +1,6 @@
 "use client"
 import CommentBox from "./commentBox"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo, useCallback } from "react"
 import { IoCloseSharp } from "react-icons/io5";
 import { IoSendSharp } from "react-icons/io5";
 
@@ -10,10 +10,12 @@ export default function Caht({ params }) {
     const [data, setData] = useState(null)
     const [replay, setReplay] = useState(null)
     const [comment, setComment] = useState("")
-    const [lodeComment, setLodeComment] = useState("")
+    let [lodeComment, setLodeComment] = useState("")
+
+
+    let add;
 
     useEffect(() => {
-
         const getComment = async () => {
             const formData = new FormData()
             formData.append("comment_id", params.commentId)
@@ -24,16 +26,13 @@ export default function Caht({ params }) {
                         body: formData
                     }
                 ).then(res => res.json()).then(res => setData(res))
-
-
             } catch (err) {
                 console.log("ERR ===============> " + err);
             }
         }
-
         getComment()
-
     }, [])
+
 
     const replayChat = (e) => {
         if (e.target.tagName == "B") {
@@ -41,15 +40,14 @@ export default function Caht({ params }) {
         }
     }
 
+
+
     const sendComment = async () => {
         const formData = new FormData()
-
-
 
         if (comment == "") {
             return false
         }
-
 
         replay && formData.append("replay", replay)
         formData.append("comment", comment)
@@ -60,25 +58,51 @@ export default function Caht({ params }) {
                 method: "POST",
                 body: formData
             })
-            setLodeComment(<CommentBox comment={{ comment: comment, replay_comment: replay }} />)
+
+            setLodeComment(!replay ?
+                `<div class="div_caht">
+                    <div class="div_caht_viwe">
+                        <p>
+                            <b>${comment}</b>
+                        </p>
+                    </div>
+                </div>`
+                + lodeComment
+                :
+                `<div class="div_caht">
+                    <div class="div_caht_viwe">
+                            <div  class= "replay" >
+                                <span>${replay}</span>
+                            </div > 
+                        <p>
+                            <b>${comment}</b>
+                        </p>
+                    </div>
+                </div>`
+                + lodeComment
+            )
+
             setReplay(null)
             setComment("")
-
         } catch (err) {
             console.log(err);
         }
     }
 
-    const renderComments = data && data.map((comment, index) => (<CommentBox key={index} onClick={replayChat} comment={comment} />))
+
+    const renderCommentsmemo = useMemo(() =>
+        data && data.map((comment, index) => (<CommentBox key={index} onClick={replayChat} comment={comment} />))
+        , [data])
+
 
 
     return (
         <section>
-            <div className="caht">
+            <div className="caht" >
                 <div className="show_caht">
 
-                    {renderComments}
-                    {lodeComment != "" && lodeComment}
+                    {lodeComment ? <div onClick={replayChat} dangerouslySetInnerHTML={{ __html: lodeComment }}></div> : null}
+                    {renderCommentsmemo}
 
                     <br />
                     <br />

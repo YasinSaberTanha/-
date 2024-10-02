@@ -135,11 +135,11 @@ body {
   margin-top: 70px;
   margin-bottom: 50px;
   border-radius: 10px 50px 10px 50px /50px 10px 50px 10px;
-  transition: all 0.5s ease-in;
+  transition: all 0.3s ease-out;
 }
 
 .section a:hover {
-  border-radius: 7px;
+  border-radius: 50px 10px 50px 10px/10px 50px 10px 50px;
   scale: 1.05;
 }
 
@@ -167,9 +167,11 @@ body {
   background-color: #8e1919;
   object-fit: cover;
 }
-.galore_video{
+
+.galore_video {
   padding-bottom: 60px;
 }
+
 .video_player {
   border-radius: 10px;
   width: 100%;
@@ -213,7 +215,7 @@ body {
 
 .icon_text button span {
   font-weight: bolder;
-  font-size: 18px;
+  font-size: 19px;
   color: var(--withe);
   text-shadow: 0px 0px 6px var(--red);
 }
@@ -223,130 +225,6 @@ body {
   min-height: 20px;
   color: var(--red);
 }
-
-
-
-
-/* _____________________________________abute______________________________________ */
-
-
-.diver_title {
-  text-align: center;
-}
-
-.diver {
-  position: relative;
-  width: 100%;
-}
-
-.x1 {
-  outline: none;
-  border: none;
-  width: 33%;
-  height: 50px;
-  background-color: rgb(226, 163, 3);
-}
-
-.x2 {
-  border: none;
-  width: 34%;
-  height: 50px;
-  background-color: rgb(2, 99, 196);
-}
-
-.x3 {
-  border: none;
-  width: 33%;
-  height: 50px;
-  background-color: rgb(0, 155, 0);
-}
-
-.x1:focus .docs1 {
-  display: block;
-}
-
-.x2:focus .docs2 {
-  display: block;
-}
-
-.x3:focus .docs3 {
-  display: block;
-}
-
-.docs1 {
-  padding: 20px;
-  position: absolute;
-  top: +50px;
-  left: 0;
-  width: 100%;
-  height: auto;
-  background-color: rgb(226, 163, 3);
-  display: none;
-  animation: 1s anmitdocs1;
-}
-
-@keyframes anmitdocs1 {
-  0% {
-    left: 100%;
-  }
-
-  100% {
-    left: 0;
-  }
-}
-
-.docs2 {
-  padding: 20px;
-  position: absolute;
-  top: +50px;
-  left: 0;
-  width: 100%;
-  height: auto;
-  background-color: rgb(2, 99, 196);
-  display: none;
-  animation: 1s anmitdocs2;
-}
-
-@keyframes anmitdocs2 {
-  0% {
-    left: 100%;
-  }
-
-  100% {
-    left: 0;
-  }
-}
-
-.docs3 {
-  padding: 20px;
-  position: absolute;
-  top: +50px;
-  left: 0;
-  width: 100%;
-  height: auto;
-  background-color: rgb(0, 155, 0);
-  display: none;
-  animation: 1s anmitdocs3;
-}
-
-@keyframes anmitdocs3 {
-  0% {
-    left: 100%;
-  }
-
-  100% {
-    left: 0;
-  }
-}
-
-
-
-
-
-
-
-
-
 
 
 

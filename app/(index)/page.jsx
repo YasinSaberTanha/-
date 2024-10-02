@@ -1,11 +1,10 @@
 
 import Nav from "./components/nav";
 import ImgesAndVideo from "./components/imgesAndVideo";
-
+import DataSettings from "../layout/dataSetting/settings";
 
 export default async function Home() {
-  const res = await fetch("http://localhost/payam/-/server/getSettings/", { cache: "no-cache" }).then(res => res.json())
-  const setting = res
+  const setting = await DataSettings()
 
   return (
     <>

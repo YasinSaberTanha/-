@@ -1,20 +1,11 @@
-"use client"
-
-import { useRef, useEffect } from "react";
+import DataSettings from "@/app/layout/dataSetting/settings";
 
 
-export default function Description({ description }) {
+export default async function Description() {
 
-    const pRef = useRef(null)
-
-    useEffect(() => {
-        pRef.current.innerHTML = description
-    }, [])
-
-
+    const setting = await DataSettings()
 
     return (
-
-        <p ref={pRef}></p>
+        <p dangerouslySetInnerHTML={{ __html: setting.description }}></p>
     )
 }

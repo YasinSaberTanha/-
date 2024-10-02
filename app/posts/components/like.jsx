@@ -23,6 +23,6 @@ export default function Like({ likes, postId }) {
         }
     }
 
-    return <button onClick={Like} ref={refLike}><span><b>{like}</b></span><FaHeart className="icon_heart" /></button>
+    return <button onClick={Like} ref={refLike}><span className="like_span"><b>{like}</b></span><FaHeart className="icon_heart" /></button>
 
 }
