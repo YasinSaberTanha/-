@@ -14,8 +14,7 @@ export default function Header() {
                     PAYAM
                 </span>
 
-
-                <MobileFerst cookie={cookie}/>
+                <MobileFerst cookie={cookie} />
 
             </header>
         </div>

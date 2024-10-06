@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <>
       <Nav setting={setting} />
-      <ImgesAndVideo setting={setting} />
+      <ImgesAndVideo setting={setting}/>
     </>
   );
 }

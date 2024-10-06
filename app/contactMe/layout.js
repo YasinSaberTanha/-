@@ -1,7 +1,7 @@
 import Header from "../layout/header/header";
-import Footer from "../layout/footer/footer";
 import { vazir } from "../fonts/font";
 import "./globals.css"
+
 
 export const metadata = {
   title: "Create Next App",

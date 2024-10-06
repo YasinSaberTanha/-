@@ -1,5 +1,4 @@
 footer {
-    
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -48,11 +47,34 @@ footer {
     color: rgb(38, 150, 47);
 }
 
-.gaper {
-    width: 12%;
-}
 
 .matlab {
-    width: 63%;
+    padding-right: 14%;
+    width: 75%;
     color: var(--grey);
+}
+
+
+
+
+@media (max-width: 768px) {
+
+
+    footer {
+        display: flex;
+        flex-wrap: wrap-reverse;
+    }
+
+    .artbat {
+        margin-top: 30px;
+        width: 100%;
+        align-items: center;
+    }
+    .matlab {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+    
+
 }

@@ -1,11 +1,15 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Item from "./item"
 
 export default function MobileFerst({ cookie }) {
 
-    const [hamburger, setHamburger] = useState(window.innerWidth > 992 ? true : false)
+    const [hamburger, setHamburger] = useState(false)
+
+    useEffect(() => {
+        setHamburger(window.innerWidth > 992 ? true : false)
+    }, [])
 
 
 

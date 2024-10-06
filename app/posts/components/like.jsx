@@ -1,4 +1,5 @@
 "use client"
+
 import { FaHeart } from "react-icons/fa";
 import { useRef, useState } from "react";
 export default function Like({ likes, postId }) {

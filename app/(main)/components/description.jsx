@@ -6,6 +6,6 @@ export default async function Description() {
     const setting = await DataSettings()
 
     return (
-        <p dangerouslySetInnerHTML={{ __html: setting.description }}></p>
+        <div dangerouslySetInnerHTML={{ __html: setting.description }}></div>
     )
 }

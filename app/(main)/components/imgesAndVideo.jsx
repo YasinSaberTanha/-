@@ -33,7 +33,7 @@ export default async function ImgesAndVideo({ setting }) {
 
     const renderImages = (data) => {
         const render = data.image.map((image) => (
-            <div>
+            <div key={image.post_id} className="box_image">
                 <Image src={`/files/${image.file}`} width={300} height={300} alt="image" />
                 <div className="icon_text">
                     <h2>{image.title}</h2>
@@ -45,8 +45,9 @@ export default async function ImgesAndVideo({ setting }) {
     }
 
     const renderVideo = (data) => {
+        
         const render = data.video.map((video) => (
-            <div>
+            <div key={video.post_id} className="box_video_player">
                 <video className="video_player" controls>
                     <source src={`/files/${video.file}`} type="video/mp4" />
                 </video>

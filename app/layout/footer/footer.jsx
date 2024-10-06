@@ -25,9 +25,6 @@ export default function Footer({ footerText }) {
                 </div>
 
             </div>
-            <div className="gaper" >
-
-            </div>
             {<FooterText footerText={footerText} />}
         </footer>
     )
