@@ -1,22 +1,20 @@
-
-import "./header.css"
-import { cookies } from "next/headers"
+import "./header.css";
+import { cookies } from "next/headers";
 import MobileFerst from "./mobileFerst";
+import Link from "next/link";
 
-export default function Header() {
+export default function Header({ logo }) {
+  const cookie = cookies().get("Token_User");
 
-    const cookie = cookies().get("Token_User")
+  return (
+    <div className="nav_continer">
+      <header className="header">
+        <Link href={"/"} className="logo">
+          {logo}
+        </Link>
 
-    return (
-        <div className="nav_continer">
-            <header className="header" >
-                <span className="logo">
-                    PAYAM
-                </span>
-
-                <MobileFerst cookie={cookie} />
-
-            </header>
-        </div>
-    );
+        <MobileFerst cookie={cookie} />
+      </header>
+    </div>
+  );
 }

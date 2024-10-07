@@ -1,83 +1,96 @@
-"use client"
+"use client";
 
-import "./settings.css"
+import "./settings.css";
 import Editor from "@/app/layout/ckEditor/editor";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Loding from "@/app/layout/lodingBtn/loding";
-
+import { toast } from "react-toastify";
 
 export default function Settings() {
-
-
-
-
-
   const [editorLoaded, setEditorLoaded] = useState(false);
   const [description, setDescription] = useState("");
   const [footer, setfooter] = useState("");
-  const [dataRes, setdataRes] = useState(null);
   const [data, setdata] = useState(null);
-  const [loding, setLoding] = useState(false)
+  const [loding, setLoding] = useState(false);
 
   useEffect(() => {
     async function getSettings() {
-      await fetch("http://localhost/payam/-/server/getSettings/", { cache: "no-cache" })
-        .then(res => res.json())
-        .then(res => setdata(res))
+      await fetch("http://localhost/payam/-/server/getSettings/", {
+        cache: "no-cache",
+      })
+        .then((res) => res.json())
+        .then((res) => setdata(res));
     }
 
-
-    getSettings()
+    getSettings();
     setEditorLoaded(true);
   }, []);
 
-
-
-
   async function submitForm(dataF) {
+    const formData = new FormData();
 
-    const formData = new FormData()
-
-
-    formData.append("favicon", dataF.get("favicon"))
-    formData.append("image", dataF.get("image"))
-    formData.append("logo", dataF.get("logo"))
-    formData.append("title", dataF.get("title"))
-    formData.append("image_id", dataF.get("image_id"))
-    formData.append("video_id", dataF.get("video_id"))
-    formData.append("description", description == "" ? data.description : description)
-    formData.append("footer", footer == "" ? data.footer : footer)
-    formData.append("keywords", dataF.get("keywords"))
-    formData.append("title_web", dataF.get("title_web"))
-    formData.append("description_web", dataF.get("description_web"))
+    formData.append("favicon", dataF.get("favicon"));
+    formData.append("image", dataF.get("image"));
+    formData.append("logo", dataF.get("logo"));
+    formData.append("title", dataF.get("title"));
+    formData.append("image_id", dataF.get("image_id"));
+    formData.append("video_id", dataF.get("video_id"));
+    formData.append(
+      "description",
+      description == "" ? data.description : description
+    );
+    formData.append("footer", footer == "" ? data.footer : footer);
+    formData.append("keywords", dataF.get("keywords"));
+    formData.append("title_web", dataF.get("title_web"));
+    formData.append("description_web", dataF.get("description_web"));
 
     try {
       fetch("http://localhost:3000/api/postSettings", {
         cache: "no-cache",
         method: "POST",
-        body: formData
-      }).then(res => res.json())
-        .then(res => setdataRes(res))
-
+        body: formData,
+      }).then((res) => {
+        if (res.ok) {
+          toast.success("اطلاعات ثبت شد", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        }
+      });
     } catch (err) {
       console.log(err);
-    }
-    finally {
-      setLoding(false)
+      toast.error("عملیات انجام نشد", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } finally {
+      setLoding(false);
     }
   }
 
   function onchange(e) {
-    setdata({ ...data, [e.target.name]: e.target.value })
+    setdata({ ...data, [e.target.name]: e.target.value });
   }
-
-
 
   return (
     <>
       <form action={submitForm}>
-        <label htmlFor="file" className="custum_file_label">Favicon</label>
+        <label htmlFor="file" className="custum_file_label">
+          Favicon
+        </label>
         <label className="custum-file-upload" htmlFor="file">
           <div className="icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24">
@@ -103,13 +116,18 @@ export default function Settings() {
           </div>
           <input type="file" id="file" name="favicon" />
         </label>
-        <Image src={`/setting/${data?.favicon}`} width={100}
+        <Image
+          src={`/setting/${data?.favicon}`}
+          width={100}
           height={100}
           style={{ margin: "20px 40px 0 40px" }}
-          alt="Picture of the author" />
+          alt="Picture of the author"
+        />
         <hr />
 
-        <label htmlFor="image" className="custum_file_label">image</label>
+        <label htmlFor="image" className="custum_file_label">
+          image
+        </label>
         <label className="custum-file-upload" htmlFor="image">
           <div className="icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24">
@@ -135,40 +153,76 @@ export default function Settings() {
           </div>
           <input type="file" id="image" name="image" />
         </label>
-        <Image src={`/setting/${data?.image}`} width={100}
+        <Image
+          src={`/setting/${data?.image}`}
+          width={100}
           height={100}
           style={{ margin: "20px 40px 0 40px" }}
-          alt="Picture of the author" />
+          alt="Picture of the author"
+        />
         <hr />
 
         <div className="logo">
-          <label htmlFor="logo_home" className="label_logo" >Logo</label>
-          <input type="text" id="logo_home" name="logo" onChange={onchange} value={data?.logo} />
+          <label htmlFor="logo_home" className="label_logo">
+            Logo
+          </label>
+          <input
+            type="text"
+            id="logo_home"
+            name="logo"
+            onChange={onchange}
+            value={data?.logo}
+          />
         </div>
         <hr />
 
         <div className="title">
-          <label htmlFor="title_home" className="label_title" >Title</label>
-          <input type="text" id="title_home" name="title" onChange={onchange} value={data?.title} />
+          <label htmlFor="title_home" className="label_title">
+            Title
+          </label>
+          <input
+            type="text"
+            id="title_home"
+            name="title"
+            onChange={onchange}
+            value={data?.title}
+          />
         </div>
         <hr />
 
         <div className="image_id">
-          <label htmlFor="image_id" className="label_image">Image_id</label>
+          <label htmlFor="image_id" className="label_image">
+            Image_id
+          </label>
           <br />
-          <input type="text" id="image_id" name="image_id" onChange={onchange} value={data?.image_id} />
-
+          <input
+            type="text"
+            id="image_id"
+            name="image_id"
+            onChange={onchange}
+            value={data?.image_id}
+          />
         </div>
         <hr />
 
         <div className="video_id">
-          <label htmlFor="video_id" className="label_video">Video_id</label>
+          <label htmlFor="video_id" className="label_video">
+            Video_id
+          </label>
           <br />
-          <input type="text" id="video_id" name="video_id" onChange={onchange} value={data?.video_id} />
+          <input
+            type="text"
+            id="video_id"
+            name="video_id"
+            onChange={onchange}
+            value={data?.video_id}
+          />
         </div>
         <hr />
 
-        <label htmlFor="###" className="label_title">Description</label>
+        <label htmlFor="###" className="label_title">
+          Description
+        </label>
         <Editor
           name="description"
           onChange={(data) => {
@@ -178,8 +232,9 @@ export default function Settings() {
         />
         <hr />
 
-
-        <label htmlFor="###" className="label_title">Footer</label>
+        <label htmlFor="###" className="label_title">
+          Footer
+        </label>
         <Editor
           name="footer"
           onChange={(data) => {
@@ -190,24 +245,50 @@ export default function Settings() {
         <hr />
 
         <div className="keywords">
-          <label htmlFor="keywords" className="label_keywords" >Keywords</label>
-          <input type="text" id="keywords" name="keywords" onChange={onchange} value={data?.keywords} />
+          <label htmlFor="keywords" className="label_keywords">
+            Keywords
+          </label>
+          <input
+            type="text"
+            id="keywords"
+            name="keywords"
+            onChange={onchange}
+            value={data?.keywords}
+          />
         </div>
         <hr />
 
         <div className="title_web">
-          <label htmlFor="title_web" className="label_title_web" >Title_web</label>
-          <input type="text" id="title_web" name="title_web" onChange={onchange} value={data?.title_web} />
+          <label htmlFor="title_web" className="label_title_web">
+            Title_web
+          </label>
+          <input
+            type="text"
+            id="title_web"
+            name="title_web"
+            onChange={onchange}
+            value={data?.title_web}
+          />
         </div>
         <hr />
 
         <div className="description_web">
-          <label htmlFor="description_web" className="label_description_web" >Description_Web</label>
+          <label htmlFor="description_web" className="label_description_web">
+            Description_Web
+          </label>
           <br />
-          <textarea id="description_web" name="description_web" onChange={onchange} value={data?.description_web}></textarea>
+          <textarea
+            id="description_web"
+            name="description_web"
+            onChange={onchange}
+            value={data?.description_web}
+          ></textarea>
         </div>
         <hr />
-        <button className="btn_submit" onClick={() => setLoding(true)}>{loding ? <Loding /> : "ثبت"}</button>
+
+        <button className="btn_submit" onClick={() => setLoding(true)}>
+          {loding ? <Loding /> : "ثبت"}
+        </button>
       </form>
     </>
   );

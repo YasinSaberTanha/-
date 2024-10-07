@@ -1,117 +1,123 @@
-"use client"
+"use client";
 
-import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { redirect } from "next/navigation";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LaginOrLagout() {
- 
-
-
   async function submitLagin(formData) {
-    const res = await fetch('http://localhost:3000/api/auth', {
-      method: "POST",
-      body: JSON.stringify({
-        gmail: formData.get('email_login'),
-        password: formData.get('password_login'),
-      })
-    })
+    const res = await toast.promise(
+      fetch("http://localhost:3000/api/auth", {
+        method: "POST",
+        body: JSON.stringify({
+          gmail: formData.get("email_login"),
+          password: formData.get("password_login"),
+        }),
+      }),
+      {
+        pending: "در حال انجام",
+        success: "ورود",
+        error: "عملیات انجام نشد",
+      }
+    );
     if (res.ok) {
-      redirect("/")
+      redirect("/");
     }
   }
 
   async function createAccount(formData) {
-
-
     const res = await toast.promise(
-      fetch('http://localhost/payam/-/server/postUser/', {
+      fetch("http://localhost/payam/-/server/postUser/", {
         method: "POST",
         body: JSON.stringify({
-          name: formData.get('name'),
-          gmail: formData.get('email'),
-          password: formData.get('password'),
-        })
+          name: formData.get("name"),
+          gmail: formData.get("email"),
+          password: formData.get("password"),
+        }),
       }),
       {
-        pending: 'Promise is pending',
-        success: 'Promise resolved 👌',
-        error: 'Promise rejected 🤯'
+        pending: "در حال انجام",
+        success: "اکانت ساخته شد",
+        error: "عملیات انجام نشد",
       }
-    )
-
+    );
     if (res.ok) {
-      redirect('/')
+      redirect("/laginOrLagout");
     }
   }
 
-
   return (
-    <div className="wrapper">
+    <>
       <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
-        rtl={false}
+        rtl
         pauseOnFocusLoss
         draggable
         pauseOnHover
         theme="dark"
       />
-      <div className="card-switch">
-        <label className="switch">
-          <input type="checkbox" className="toggle" />
-          <span className="slider" />
-          <span className="card-side" />
-          <div className="flip-card__inner">
-            <div className="flip-card__front">
-              <div className="title">Log in</div>
-              <form className="flip-card__form" action={submitLagin}>
-                <input
-                  className="flip-card__input"
-                  name="email_login"
-                  placeholder="Email"
-                  type="email"
-                />
-                <input
-                  className="flip-card__input"
-                  name="password_login"
-                  placeholder="Password"
-                  type="password"
-                />
-                <button type="submit" className="flip-card__btn">Let`s go!</button>
-              </form>
+      <div className="wrapper">
+        <div className="card-switch">
+          <label className="switch">
+            <input type="checkbox" className="toggle" />
+            <span className="slider" />
+            <span className="card-side" />
+            <div className="flip-card__inner">
+              <div className="flip-card__front">
+                <div className="title">Log in</div>
+                <form className="flip-card__form" action={submitLagin}>
+                  <input
+                    className="flip-card__input"
+                    name="email_login"
+                    placeholder="Email"
+                    type="email"
+                  />
+                  <input
+                    className="flip-card__input"
+                    name="password_login"
+                    placeholder="Password"
+                    type="password"
+                  />
+                  <button type="submit" className="flip-card__btn">
+                    Let`s go!
+                  </button>
+                </form>
+              </div>
+              <div className="flip-card__back">
+                <div className="title">Sign up</div>
+                <form className="flip-card__form" action={createAccount}>
+                  <input
+                    className="flip-card__input"
+                    name="name"
+                    placeholder="name"
+                    type="name"
+                  />
+                  <input
+                    className="flip-card__input"
+                    name="email"
+                    placeholder="Email"
+                    type="email"
+                  />
+                  <input
+                    className="flip-card__input"
+                    name="password"
+                    placeholder="Password"
+                    type="password"
+                  />
+                  <button type="submit" className="flip-card__btn">
+                    Confirm!
+                  </button>
+                </form>
+              </div>
             </div>
-            <div className="flip-card__back">
-              <div className="title">Sign up</div>
-              <form className="flip-card__form" action={createAccount}>
-                <input
-                  className="flip-card__input"
-                  name="name"
-                  placeholder="name"
-                  type="name"
-                />
-                <input
-                  className="flip-card__input"
-                  name="email"
-                  placeholder="Email"
-                  type="email"
-                />
-                <input
-                  className="flip-card__input"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                />
-                <button type="submit" className="flip-card__btn">Confirm!</button>
-              </form>
-            </div>
-          </div>
-        </label>
+          </label>
+        </div>
       </div>
-    </div>
-  )
+    </>
+  );
 }

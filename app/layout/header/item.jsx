@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import CheckLogin from "./checkLogin";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 export default function Item({ cookie }) {
 

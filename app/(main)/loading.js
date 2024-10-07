@@ -1,3 +1,6 @@
+import LoadingPage from "../layout/loading/loading"
+
+
 export default function Loading() {
-    return <h1 style={{color:"blak" , backgroundColor: "red"}}>Loading...</h1>
+    return <LoadingPage />
 }

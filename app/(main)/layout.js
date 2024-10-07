@@ -17,13 +17,10 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-
-
-
     return (
         <html lang="fa-IR" dir="rtl">
             <body className={vazir.className}>
-                <Header />
+                <Header logo={setting.logo} />
                 {children}
                 <Footer footerText={setting.footer} />
             </body>

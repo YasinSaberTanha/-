@@ -1,6 +1,6 @@
 "use client"
 import CommentBox from "./commentBox"
-import { useState, useEffect, useMemo, useCallback } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { IoCloseSharp } from "react-icons/io5";
 import { IoSendSharp } from "react-icons/io5";
 
