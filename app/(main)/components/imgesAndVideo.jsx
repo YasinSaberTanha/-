@@ -45,7 +45,7 @@ export default async function ImgesAndVideo({ setting }) {
     }
 
     const renderVideo = (data) => {
-        
+
         const render = data.video?.map((video) => (
             <div key={video.post_id} className="box_video_player">
                 <video className="video_player" controls>
