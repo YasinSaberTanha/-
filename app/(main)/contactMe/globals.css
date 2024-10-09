@@ -9,6 +9,7 @@
   --red_med: #FFCDD2;
 }
 
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -104,7 +105,7 @@ body {
   margin-bottom: 10px;
 }
 
-.div_caht_viwe  {
+.div_caht_viwe {
   background-color: #5caa44;
   width: fit-content;
   max-width: 55%;

@@ -23,7 +23,7 @@ export default function CreatePostgit() {
     refBtn.current.disabled = true
     
     try {
-      const res = await fetch("http://localhost:3000/api/postPost", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NEXT}/api/postPost`, {
         method: "POST",
         body: formData
       })

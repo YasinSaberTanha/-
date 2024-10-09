@@ -8,7 +8,7 @@ export default function CheckLogin({ cookie }) {
 
     const deleteCookie = async () => {
         setcookies(null)
-        await fetch("http://localhost:3000/api/deleteCookie")
+        await fetch(`${process.env.NEXT_PUBLIC_HOST_NEXT}/api/deleteCookie`)
     }
 
     return (

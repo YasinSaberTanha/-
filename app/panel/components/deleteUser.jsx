@@ -3,7 +3,6 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Loding from "@/app/layout/lodingBtn/loding";
-import Error from "next/error";
 
 export default function DeleteUser({ userid }) {
   const [deleteBtn, setDeleteBtn] = useState({ delete: false, loding: false });
@@ -14,7 +13,7 @@ export default function DeleteUser({ userid }) {
     formData.append("user_id", id);
 
     try {
-      const res = await fetch("http://localhost:3000/api/deleteUser", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NEXT}/api/deleteUser`, {
         method: "POST",
         body: formData,
       });

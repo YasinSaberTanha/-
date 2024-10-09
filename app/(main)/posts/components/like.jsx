@@ -12,7 +12,7 @@ export default function Like({ likes, postId }) {
         formData.append("likes", likes)
         formData.append("post_id", postId)
         try {
-            const res = await fetch("http://localhost/payam/-/server/postLikes/", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/server/postLikes/`, {
                 method: "POST",
                 body: formData
             }).then(res => res.json())

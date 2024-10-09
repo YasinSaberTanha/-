@@ -20,7 +20,7 @@ export default function Caht({ params }) {
             const formData = new FormData()
             formData.append("comment_id", params.commentId)
             try {
-                const res = await fetch("http://localhost/payam/-/server/getComment/",
+                const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/server/getComment/`,
                     {
                         method: "POST",
                         body: formData
@@ -54,7 +54,7 @@ export default function Caht({ params }) {
         formData.append("post_id", params.commentId)
 
         try {
-            await fetch("http://localhost/payam/-/server/postComment/", {
+            await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/server/postComment/`, {
                 method: "POST",
                 body: formData
             })

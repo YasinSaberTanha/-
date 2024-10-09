@@ -8,7 +8,7 @@ export async function POST(res) {
 
     try {
 
-        const res = await fetch("http://localhost/payam/-/server/deletePost/", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/server/deletePost/`, {
             cache: "no-cache",
             method: "POST",
             body: formData

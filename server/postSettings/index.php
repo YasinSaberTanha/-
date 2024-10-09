@@ -40,8 +40,8 @@ if (boolval($user_jwt) && $user_jwt == "admin") {
 
 
             API(
-                "UPDATE `settings` SET favicon = ?, logo = ?, image_id = ?, video_id = ?, title = ?, description = ?, footer = ?, title_web = ?, description_web = ?, keywords = ?, image = ?;",
-                [$faviconName, $_POST["logo"], $_POST["image_id"], $_POST["video_id"], $_POST["title"], $_POST["description"], $_POST["footer"], $_POST["title_web"], $_POST["description_web"], $_POST["keywords"], $imageName]
+                "UPDATE `settings` SET favicon = ?, logo = ?, image_id = ?, video_id = ?, title = ?, description = ?, footer = ?, title_web = ?, description_web = ?, keywords = ?, image = ?, instagram = ?, telegram = ?, phone = ?;",
+                [$faviconName, $_POST["logo"], $_POST["image_id"], $_POST["video_id"], $_POST["title"], $_POST["description"], $_POST["footer"], $_POST["title_web"], $_POST["description_web"], $_POST["keywords"], $imageName, $_POST["instagram"], $_POST["telegram"], $_POST["phone"]]
             );
         } else {
             echo json_encode("Empty data");

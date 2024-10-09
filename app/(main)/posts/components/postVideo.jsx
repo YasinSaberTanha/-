@@ -13,7 +13,7 @@ export default function PostVideo({ post }) {
                     <p ><b>{post.description}</b></p>
                     <div>
                         <Like likes={post.likes} postId={post.post_id} />
-                        <Link className="link_comment" href={`posts/${post.post_id}`}><span><b>{post.comment}</b></span><FaComment className="icon_comment" /></Link>
+                        <Link className="link_comment" href={`/${post.post_id}`}><span><b>{post.comment}</b></span><FaComment className="icon_comment" /></Link>
                         <span><b>{post.date_create}</b></span>
                     </div>
                 </div>

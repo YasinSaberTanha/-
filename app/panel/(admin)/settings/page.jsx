@@ -16,7 +16,7 @@ export default function Settings() {
 
   useEffect(() => {
     async function getSettings() {
-      await fetch("http://localhost/payam/-/server/getSettings/", {
+      await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/server/getSettings/`, {
         cache: "no-cache",
       })
         .then((res) => res.json())
@@ -36,17 +36,17 @@ export default function Settings() {
     formData.append("title", dataF.get("title"));
     formData.append("image_id", dataF.get("image_id"));
     formData.append("video_id", dataF.get("video_id"));
-    formData.append(
-      "description",
-      description == "" ? data.description : description
-    );
+    formData.append("description", description == "" ? data.description : description);
     formData.append("footer", footer == "" ? data.footer : footer);
     formData.append("keywords", dataF.get("keywords"));
     formData.append("title_web", dataF.get("title_web"));
     formData.append("description_web", dataF.get("description_web"));
+    formData.append("instagram", dataF.get("instagram"));
+    formData.append("telegram", dataF.get("telegram"));
+    formData.append("phone", dataF.get("phone"));
 
     try {
-      fetch("http://localhost:3000/api/postSettings", {
+      fetch(`${process.env.NEXT_PUBLIC_HOST_NEXT}/api/postSettings`, {
         cache: "no-cache",
         method: "POST",
         body: formData,
@@ -243,6 +243,49 @@ export default function Settings() {
           editorLoaded={editorLoaded}
         />
         <hr />
+
+        <div className="keywords">
+          <label htmlFor="keywords" className="label_keywords">
+            Instagram
+          </label>
+          <input
+            type="text"
+            id="keywords"
+            name="instagram"
+            onChange={onchange}
+            value={data?.instagram}
+          />
+        </div>
+        <hr />
+
+        <div className="keywords">
+          <label htmlFor="keywords" className="label_keywords">
+            Telegram
+          </label>
+          <input
+            type="text"
+            id="keywords"
+            name="telegram"
+            onChange={onchange}
+            value={data?.telegram}
+          />
+        </div>
+        <hr />
+
+        <div className="keywords">
+          <label htmlFor="keywords" className="label_keywords">
+          Phone
+          </label>
+          <input
+            type="text"
+            id="keywords"
+            name="phone"
+            onChange={onchange}
+            value={data?.phone}
+          />
+        </div>
+        <hr />
+
 
         <div className="keywords">
           <label htmlFor="keywords" className="label_keywords">

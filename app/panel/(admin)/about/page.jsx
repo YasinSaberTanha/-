@@ -3,6 +3,11 @@ import "./globals.css";
 import Editor from "@/app/layout/ckEditor/editor";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+
+
+
+
+
 export default function About() {
   const [editorLoaded, setEditorLoaded] = useState(false);
   const [descriptionsAbout, setDescriptionsAbout] = useState("");
@@ -12,7 +17,7 @@ export default function About() {
     formData.append("descriptions_about", descriptionsAbout);
 
     try {
-      const res = await fetch("http://localhost:3000/api/postAbout", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NEXT}/api/postAbout`, {
         cache: "no-cache",
         method: "POST",
         body: formData,
@@ -49,15 +54,17 @@ export default function About() {
   }, []);
 
   return (
-    <form action={getAbout}>
-      <Editor
-        name="descriptions"
-        onChange={(data) => {
-          setDescriptionsAbout(data);
-        }}
-        editorLoaded={editorLoaded}
-      />
-      <button className="btn_submit">ثبت</button>
-    </form>
+    <>
+      <form action={getAbout}>
+        <Editor
+          name="descriptions"
+          onChange={(data) => {
+            setDescriptionsAbout(data);
+          }}
+          editorLoaded={editorLoaded}
+        />
+        <button className="btn_submit">ثبت</button>
+      </form>
+    </>
   );
 }

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Like from "@/app/posts/components/like";
+import Like from "@/app/(main)/posts/components/like";
 
 export default async function ImgesAndVideo({ setting }) {
 
@@ -21,7 +21,7 @@ export default async function ImgesAndVideo({ setting }) {
         formData.append("video_id_2", video[1])
         formData.append("video_id_3", video[2])
 
-        const data = await fetch("http://localhost/payam/-/server/getPostImage/", {
+        const data = await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/server/getPostImage/`, {
             cache: "no-cache",
             method: "POST",
             body: formData
@@ -32,7 +32,7 @@ export default async function ImgesAndVideo({ setting }) {
     }
 
     const renderImages = (data) => {
-        const render = data.image.map((image) => (
+        const render = data.image?.map((image) => (
             <div key={image.post_id} className="box_image">
                 <Image src={`/files/${image.file}`} width={300} height={300} alt="image" />
                 <div className="icon_text">
@@ -46,7 +46,7 @@ export default async function ImgesAndVideo({ setting }) {
 
     const renderVideo = (data) => {
         
-        const render = data.video.map((video) => (
+        const render = data.video?.map((video) => (
             <div key={video.post_id} className="box_video_player">
                 <video className="video_player" controls>
                     <source src={`/files/${video.file}`} type="video/mp4" />

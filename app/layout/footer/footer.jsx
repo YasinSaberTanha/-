@@ -1,31 +1,32 @@
 import "./footer.css";
-
+import DataSettings from "../dataSetting/settings";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaTelegram } from "react-icons/fa";
 import { BsTelephoneFill } from "react-icons/bs";
-import FooterText from "./footerText";
+import Link from "next/link";
+export default async function Footer() {
 
-export default function Footer({ footerText }) {
+    const setting = await DataSettings()
     return (
         <footer>
             <div className="artbat">
                 <div>
-                    <a href="">payamghaanbarian</a>
+                    <Link href={`instagram://user?username=${setting.instagram}`}>{setting.instagram}</Link>
                     <RiInstagramFill className="icon_instagram" />
                 </div>
 
                 <div>
-                    <a href="">payamghaanbarian@</a>
+                    <Link href={`tg://user?id=${setting.telegram}`}>{setting.telegram}</Link>
                     <FaTelegram className="icon_telegram" />
                 </div>
 
                 <div>
-                    <a href="">0915-926-1032</a>
+                    <Link href={`tel:${setting.phone}`}>{setting.phone}</Link>
                     <BsTelephoneFill className="icon_phone" />
                 </div>
 
             </div>
-            {<FooterText footerText={footerText} />}
+            <div dangerouslySetInnerHTML={{ __html: setting.footer }} className="matlab"></div>
         </footer>
     )
 }

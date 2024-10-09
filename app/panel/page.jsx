@@ -1,14 +1,15 @@
+
 import User from "./components/user";
+import "./globals.css"
+
+
 export default async function Panel() {
   const getUser = async () => {
     try {
       const data = await fetch(
-        "http://localhost/payam/-/server/getUserPanel/",
+        `${process.env.NEXT_PUBLIC_HOST_NAME}/server/getUserPanel/`,
         {
-          cache: "no-cache",
-          next: {
-            tags: ["getUserPanel"],
-          },
+          cache: "no-cache"
         }
       );
       const users = await data.json();

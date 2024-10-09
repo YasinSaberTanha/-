@@ -7,7 +7,7 @@ export default async function Posts() {
 
   const getPosts = async () => {
     try {
-      const data = await fetch("http://localhost/payam/-/server/getPosts/", { cache: "no-cache" })
+      const data = await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/server/getPosts/`, { cache: "no-cache" })
       const posts = await data.json()
 
       const renderPosts = posts.map((post) => (<Post post={post} />))

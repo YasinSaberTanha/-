@@ -7,7 +7,7 @@ export async function POST(res) {
 
     formData.append("user_jwt", cookies().get("Token_User").value)
     try {
-        const data = fetch("http://localhost/payam/-/server/postSettings/", {
+        const data = fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/server/postSettings/`, {
             cache: "no-cache",
             method: "POST",
             body: formData

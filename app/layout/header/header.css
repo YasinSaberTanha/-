@@ -471,7 +471,10 @@
         top: 0;
         left: 0;
         background-color: #0000006b;
+
     }
+
+
 
     .mobile_ferst {
         position: fixed;
@@ -487,6 +490,20 @@
         height: 100%;
         stroke-opacity: 0.5;
         z-index: 1000;
+        animation: mobile_ferst 0.6s ease;
+    }
+
+    @keyframes mobile_ferst {
+        0% {
+            top: -100vh;
+            right: -150px;
+            scale: 0;
+        }
+
+        100% {
+            top: 0;
+            right: 0;
+        }
     }
 
     .mobile_ferst div {

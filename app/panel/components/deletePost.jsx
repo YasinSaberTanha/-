@@ -24,7 +24,7 @@ export default function DeletePost({ postid, file }) {
     formData.append("post_id", id);
 
     try {
-      const res = await fetch("http://localhost:3000/api/deletePost", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NEXT}/api/deletePost`, {
         method: "POST",
         body: formData,
       });
@@ -65,7 +65,7 @@ export default function DeletePost({ postid, file }) {
     formData.append("post_id", id);
 
     try {
-      const res = await fetch("http://localhost:3000/api/deleteComments", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NEXT}/api/deleteComments`, {
         method: "POST",
         body: formData,
       });
